@@ -27,7 +27,6 @@
 <script>
 import headerPage from '../components/header/header-page.vue'
 import headerActivity from '../components/header/header-activity.vue'
-import activityData from '../components/activity/activity-data.vue'
 import axios from '@/plugins/axios'
 import moment from 'moment'
 import $ from 'jquery'
@@ -36,7 +35,6 @@ export default {
   components: {
     headerPage,
     headerActivity,
-    activityData
   },
   data() {
     return {
