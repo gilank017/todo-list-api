@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './plugins/router'
 
 import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap-select/dist/css/bootstrap-select.min.css"
+import "bootstrap-select/dist/js/bootstrap-select.min.js"
 import "bootstrap"
 
-const Swal = require('sweetalert2')
-
-createApp(App).use(router, Swal).mount('#app')
+createApp(App).use(router).mount('#app')

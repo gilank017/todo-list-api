@@ -2,12 +2,14 @@
 .activity-page-wrapper
   header-page
   .container
-    header-activity
-    .activity-content-list
+    header-activity(@refreshData="getListActivity")
+    div(v-if="listActivity.length === 0")
+      img.img-fluid(data-cy="activity-empty-state" src="../assets/img/activity-empty-state.svg")
+    .activity-content-list(v-else)
       .row
         .col-lg-3.col-md-6(v-for="(activity, index) in listActivity" :key="index")
           .card.activity-card(data-cy="activity-item")
-            .activity-body
+            .activity-body(@click="toDetail(activity.id)")
               h4.activity-title(data-cy="activity-item-title") {{ activity.title }}
             .card-footer.text-muted
               span.activity-date(data-cy="activity-item-date") {{ parseDate(activity.created_at) }}
@@ -82,13 +84,17 @@ export default {
       if (response.status === 'Success') {
         this.deleteModalClose()
         Swal.fire({
-          position: 'top-end',
-          html:'<div style="text-align: left; display:flex; align-items:center;"><div class="fa fa-exclamation-circle" style="font-size: 26px; color: #00A790;"></div> <div style="font-size:18px; line-height:21px; font-weight: 500; margin-left: 10px;">   Activity Berhasil Dihapus</div></div>',
+          html:'<div style="text-align: left; display:flex; align-items:center;"><div data-cy="modal-information-icon" class="fa fa-exclamation-circle" style="font-size: 26px; color: #00A790;"></div> <div data-cy="modal-information-title" style="font-size:18px; line-height:21px; font-weight: 500; margin-left: 10px;">   Activity Berhasil Dihapus</div></div>',
           showConfirmButton: false,
           timer: 1000
         })
         this.getListActivity()
       }
+    },
+    toDetail(id) {
+      this.$router.push({
+        path: `/detail/${id}`
+      })
     }
   }
   

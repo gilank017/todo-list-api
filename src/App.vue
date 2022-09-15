@@ -8,5 +8,5 @@
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
-  background-color: #f4f4f4
+  
 </style>

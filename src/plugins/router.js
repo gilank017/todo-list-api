@@ -8,7 +8,7 @@ const routes = [
     component: todoActivity
   },
   {
-    path: '/detail/',
+    path: '/detail/:id',
     name: 'list',
     component: () => import('../views/todo-list.vue')
   }
